@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Using Callable and Future
@@ -29,8 +30,9 @@ public class FutureAndCallableExample {
         // This line executes immediately
         System.out.println("Do something else while callable is getting executed");
         
+        AtomicInteger atomicInt = new AtomicInteger(0);
         while(!future.isDone()) {
-            System.out.println("Task is still not done...");
+            System.out.println(atomicInt.incrementAndGet() + ". Task is still not done...");
             TimeUnit.SECONDS.sleep(1);
         }
 
