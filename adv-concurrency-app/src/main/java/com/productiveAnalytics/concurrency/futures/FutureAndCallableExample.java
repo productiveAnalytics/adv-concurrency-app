@@ -1,4 +1,4 @@
-package com.productiveAnalytics.concurrency.executors;
+package com.productiveAnalytics.concurrency.futures;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -25,9 +25,14 @@ public class FutureAndCallableExample {
 
         System.out.println("Submitting Callable");
         Future<String> future = executorService.submit(callable);
-
+        
         // This line executes immediately
         System.out.println("Do something else while callable is getting executed");
+        
+        while(!future.isDone()) {
+            System.out.println("Task is still not done...");
+            TimeUnit.SECONDS.sleep(1);
+        }
 
         System.out.println("Retrieve the result of the future");
         // Future.get() blocks until the result is available
