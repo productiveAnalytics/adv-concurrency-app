@@ -36,6 +36,9 @@ public class CompletableFuturExample {
 		// Attach a callback to the Future using thenApply()
 		CompletableFuture<String> greetingFuture = whatsYourNameFuture.thenApply(name -> {
 		   return "Hello " + name;
+		})
+		.thenApply(greeting -> {	// Chaining multiple thenApply()
+		   return String.format("*** %s ***", greeting);	
 		});
 	
 		// Block and get the result of the future.
