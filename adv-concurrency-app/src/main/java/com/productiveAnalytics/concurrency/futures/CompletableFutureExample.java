@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 // https://www.callicoder.com/java-8-completablefuture-tutorial/
-public class CompletableFuturExample {
+public class CompletableFutureExample {
 
 	public static void main(String[] args) {
 		System.out.println("main(): Started at "+ System.nanoTime());
